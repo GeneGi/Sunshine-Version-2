@@ -1,7 +1,3 @@
-package com.example.jz.mysunshine.data;
-/**
- * Created by jz on 2015/4/20.
- */
 /*
  * Copyright (C) 2014 The Android Open Source Project
  *
@@ -17,14 +13,14 @@ package com.example.jz.mysunshine.data;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.example.android.sunshine.app.data;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
+
 import java.util.HashSet;
-
-
 
 public class TestDb extends AndroidTestCase {
 
@@ -180,6 +176,7 @@ public class TestDb extends AndroidTestCase {
         dbHelper.close();
     }
 
+
     /*
         Students: This is a helper method for the testWeatherTable quiz. You can move your
         code from testLocationTable to here so that you can call this code from both
@@ -190,10 +187,10 @@ public class TestDb extends AndroidTestCase {
         // If there's an error in those massive SQL table creation Strings,
         // errors will be thrown here when you try to get a writable database.
         WeatherDbHelper dbHelper = new WeatherDbHelper(mContext);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // Second Step: Create ContentValues of what you want to insert
         // (you can use the createNorthPoleLocationValues if you wish)
-
         ContentValues testValues = TestUtilities.createNorthPoleLocationValues();
 
         // Third Step: Insert ContentValues into database and get a row ID back
@@ -221,6 +218,7 @@ public class TestDb extends AndroidTestCase {
         // Move the cursor to a valid database row and check to see if we got any records back
         // from the query
         assertTrue( "Error: No Records returned from location query", cursor.moveToFirst() );
+
         // Fifth Step: Validate data in resulting Cursor with the original ContentValues
         // (you can use the validateCurrentRecord function in TestUtilities to validate the
         // query if you like)
